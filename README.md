@@ -40,7 +40,6 @@ I love meeting new people and discussing exciting opportunities! Feel free to re
 <a href="https://instagram.com/dani._.aeo" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/instagram.svg" alt="dani._.aeo" height="30" width="40" /></a>
 <a href="https://www.youtube.com/@Dani_aeo" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/youtube.svg" alt="dani_aeo" height="30" width="40" /></a>
 </p>
-
 <h3 align="left">Languages and Tools:</h3>
 <p align="left"> 
   <a href="https://www.figma.com/" target="_blank" rel="noreferrer"> 
