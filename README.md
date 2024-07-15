@@ -1,6 +1,6 @@
 # Hi, I'm Daniyal Ali!
 
-![API Banner](https://github.com/Daniyalaliy/twitch-dashboard/blob/main/assets/api.gif) <!-- Replace this with the actual URL once uploaded -->
+![API Banner](https://raw.githubusercontent.com/walidbosso/walidbosso/main/images/api.gif)
 
 ## Passionate Data Architect | Power BI & Data Visualization Expert
 
@@ -32,3 +32,4 @@ I love connecting with new people. You can reach me at [daniyalalirangwala@gmail
 
 ## GitHub Stats
 ![Daniyal's github stats](https://github-readme-stats.vercel.app/api?username=Daniyalaliy&count_private=true&show_icons=true&theme=radical&hide_rank=false)
+
