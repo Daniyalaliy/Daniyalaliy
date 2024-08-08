@@ -55,3 +55,38 @@ I love meeting new people and discussing exciting opportunities! Feel free to re
     <img src="https://www.prowesstics.com/static/images/icon/power_bi_logo.png" alt="animated tool" width="40" height="40"/> 
   </a>
 </p>
+#
+name: Update README with Latest YouTube Video
+
+on:
+  schedule:
+    - cron: '0 * * * *' # Runs every hour
+  workflow_dispatch:
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Fetch Latest YouTube Videos
+        id: fetch-videos
+        uses: gaurav-nelson/github-action-youtube-card@v1
+        with:
+          channel_id: "https://youtube.com/@dani_aeo?si=gSlkY8MgnCqDr7lE"  # Replace with your Channel ID
+          max_videos: 1
+          youtube_api_key: ${{AIzaSyD8g9ExQiGLm1UtAOzA6e6UorNLp4pMpFU}}
+
+      - name: Update README
+        run: |
+          sed -i '/<!-- YOUTUBE-CARDS START -->/,/<!-- YOUTUBE-CARDS END -->/c\${{ steps.fetch-videos.outputs.markdown }}' README.md
+          
+      - name: Commit and Push Changes
+        run: |
+          git config --local user.name "GitHub Actions"
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git commit -m "docs(readme): Update YouTube cards"
+          git push
