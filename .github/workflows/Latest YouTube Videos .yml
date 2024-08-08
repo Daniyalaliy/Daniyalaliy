@@ -1,0 +1,41 @@
+name: Latest YouTube Videos
+on:
+  schedule:
+    - cron: '0 * * * *' # Runs every hour
+  workflow_dispatch:
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Fetch Latest YouTube Videos
+        id: fetch-videos
+        uses: gaurav-nelson/github-action-youtube-card@v1
+        with:
+          channel_id: "UClCoRa287tgcvEYXvGdmJ1w"  # Your Channel ID
+          max_videos: 3
+          youtube_api_key: ${{ secrets. AIzaSyD8g9ExQiGLm1UtAOzA6e6UorNLp4pMpFU }}
+
+      - name: Update README
+        run: |
+          # Get the content from the action output
+          new_content="${{ steps.fetch-videos.outputs.markdown }}"
+          # Update the README file by replacing the content between the markers
+          awk -v new_content="$new_content" '
+          BEGIN { inside=0 }
+          /<!-- YOUTUBE-CARDS START -->/ { print; print new_content; inside=1; next }
+          /<!-- YOUTUBE-CARDS END -->/ { inside=0 }
+          !inside { print }
+          ' README.md > README.new && mv README.new README.md
+
+      - name: Commit and Push Changes
+        run: |
+          git config --local user.name "GitHub Actions"
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git commit -m "docs(readme): Update YouTube cards"
+          git push
